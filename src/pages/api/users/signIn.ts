@@ -17,6 +17,7 @@ async function SignIn(req:NextApiRequest, res:NextApiResponse ) {
     if (result.length > 0) {
         bcrypt.compare(password, result[0].password, function(err:Error, igual: any) {
             if (err) {
+                res.status(201)
                 throw err
             } else if (!igual) {
                 res.status(201).send({msg: "Senha incorreta!"})
