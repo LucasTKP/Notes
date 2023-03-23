@@ -28,6 +28,7 @@ function Form() {
   async function SignIn(){
     const pageUrl = window.location.origin
     const data = await axios.post(pageUrl + '/api/users/signIn', dataUser)
+    console.log(data)
     if(data.status !== 200){
       throw toast.error(data.data.msg)
     } else {
