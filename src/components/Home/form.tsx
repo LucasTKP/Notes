@@ -25,8 +25,9 @@ function Form() {
   },[])
   
   async function GetNotes(dataLocalStorage: DataUser){
+    const pageUrl = window.location.href
     if(dataLocalStorage){
-      const data = await axios.post('http://localhost:3000/api/notes/getNotes', {id:dataLocalStorage.id})
+      const data = await axios.post(pageUrl + '/api/notes/getNotes', {id:dataLocalStorage.id})
       if(data.status === 200){
         setNotes(data.data)
       }
@@ -39,7 +40,8 @@ function Form() {
   } 
 
   async function CreatedNotes(){
-    const data = await axios.post('http://localhost:3000/api/notes/createdNotes', dataNote)
+    const pageUrl = window.location.href
+    const data = await axios.post(pageUrl + 'api/notes/createdNotes', dataNote)
     if(data.status != 200){
       console.log(data)
       throw toast.error(data.data.msg)
@@ -53,7 +55,7 @@ function Form() {
     e.preventDefault()
     toast.promise(CreatedNotes(),{pending:'Criando nota...', success:'Nota criada com sucesso!'})
   }
-  console.log()
+
   return (
     <div>
       <form onSubmit={OnToast} className='flex flex-col mt-[20px] max-sm:mt-[10px]'>

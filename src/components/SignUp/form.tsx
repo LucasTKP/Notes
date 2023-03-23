@@ -21,7 +21,8 @@ function Form() {
   },[])
 
   async function SignUp(){
-    const data = await axios.post('http://localhost:3000/api/users/signUp', dataUser)
+    const pageUrl = window.location.href
+    const data = await axios.post(pageUrl + 'api/users/signUp', dataUser)
     if(data.status != 200){
       console.log(data)
       throw toast.error(data.data.msg)
