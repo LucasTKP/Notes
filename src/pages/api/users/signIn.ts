@@ -39,7 +39,6 @@ async function SignIn(req:NextApiRequest, res:NextApiResponse ) {
         console.log(e)
         res.status(201)
     }
-    res.status(200).send({msg: 'Usuario logado com sucesso!'})
 }
 
 export default SignIn
