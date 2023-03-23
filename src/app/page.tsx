@@ -6,7 +6,7 @@ import FaviIcon from '../../public/note-svgrepo-com.svg'
 function Page() {
   return (
     <section className='flex w-full justify-center mt-[30px] font-[600]'>
-              <Head>
+      <Head>
         <link rel="shortcut icon" href={FaviIcon} />
       </Head>
         <div className='w-[90%] max-w-[500px]'>
