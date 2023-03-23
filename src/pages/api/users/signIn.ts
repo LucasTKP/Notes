@@ -33,6 +33,7 @@ async function SignIn(req:NextApiRequest, res:NextApiResponse ) {
     if (result.length === 0) {
         res.status(201).send({msg: "Email não cadastrado!"})
     }
+    res.status(200).send({msg: 'Usuario logado com sucesso!'})
 }
 
 export default SignIn
