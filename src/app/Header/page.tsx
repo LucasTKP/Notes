@@ -1,23 +1,34 @@
 'use client'
 import Link from 'next/link'
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import userContext from '../appContext'
+import { DataUser } from '../../types/interfaces'
 
 
 function Page() {
     const { dataUser, setDataUser } = useContext(userContext)
-    const dataUserStorage = localStorage.getItem('user')
+    const [dataUserStorage, setDataUserStorage] = useState<DataUser>()
+    
+    useEffect(() =>{
+        if(dataUser){
+            const dataLocalStorage = localStorage.getItem('user')
+            if(dataLocalStorage){
+                setDataUserStorage(JSON.parse(dataLocalStorage))
+            }
+        }
+    },[dataUser])
 
     async function Exit(){
         localStorage.setItem('user', '')
         setDataUser({})
+        setDataUserStorage({})
     }
 
   return (
     <section className='w-full h-[10%] bg-[#F7C036] flex flex-col justify-center items-center'>
         <div className='flex w-[70%] max-lg:w-[95%] justify-between'>
             <Link href={'/'} className='text-[40px] max-md:text-[30px] max-sm:text-[25px] text-white font-[600] group hover:scale-110 duration-200 flex'>Note App <span className='group-hover:hidden'>📔</span> <span className='hidden group-hover:flex'>📖</span></Link>
-            {dataUserStorage ? 
+            {dataUserStorage?.id ? 
                 <div className='flex'>
                     <p className='max-w-[200px] text-ellipsis overflow-hidden text-[40px] max-md:text-[30px] max-sm:text-[25px] text-white font-[600] font-poppins mr-[20px]'>{dataUser?.name}</p>
                     <div onClick={() => Exit()} className='flex flex-col justify-center mr-[20px]'>

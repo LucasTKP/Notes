@@ -9,11 +9,11 @@ import { useRouter } from 'next/navigation';
 function Form() {
   const [eyeOff, setEyeOff] = useState<boolean>(true)
   const [dataUser, setDataUser] = useState<{name:string, email:string, password:string}>({name:'', email:'', password:''})
-  const dataUserStorage = localStorage.getItem('user')
   const router = useRouter()
-  
+
   useEffect(() => {
-      if(dataUserStorage){
+    const dataLocalStorage = localStorage.getItem('user')
+      if(dataLocalStorage){
           router.replace('/')
           toast.info('Você ja está logado.')
       }
@@ -22,12 +22,11 @@ function Form() {
 
   async function SignUp(){
     const data = await axios.post('http://localhost:3000/api/users/signUp', dataUser)
-    if(data.status === 200){
-      
-    } else {
+    if(data.status != 200){
       console.log(data)
       throw toast.error(data.data.msg)
     }
+    router.replace('/login')
   }
 
   function OnToast(e: { preventDefault: () => void; }){

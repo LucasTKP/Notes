@@ -1,25 +1,28 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { Notes } from '../../types/interfaces'
+import { Notes, DataUser } from '../../types/interfaces'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import styles from '../../app/general.module.css'
 
 
 function Form() {
-  const dataUserStorage = localStorage.getItem('user')
   const [dataNote, setDataNote] = useState<Notes>({title:'', text:'', id_user:''})
   const [notes, setNotes] = useState<Notes[]>([])
 
   useEffect(() => {
-    GetNotes()
+    const dataUserStorage = localStorage.getItem('user')
+    if(dataUserStorage){
+      const dataLocalStorageJSON = JSON.parse(dataUserStorage)
+      GetNotes(dataLocalStorageJSON)
+      setDataNote({...dataNote, id_user: dataLocalStorageJSON.id})
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
-  async function GetNotes(){
-    if(dataUserStorage){
-      const dataNotesJSON = JSON.parse(dataUserStorage)
-      const data = await axios.post('http://localhost:3000/api/notes/getNotes', {id:dataNotesJSON.id})
+  async function GetNotes(dataLocalStorage: DataUser){
+    if(dataLocalStorage){
+      const data = await axios.post('http://localhost:3000/api/notes/getNotes', {id:dataLocalStorage.id})
       if(data.status === 200){
         setNotes(data.data)
       }
@@ -30,14 +33,6 @@ function Form() {
       }
     }
   } 
-  
-  useEffect(() => {
-    if(dataUserStorage){
-      const dataNotesJSON = JSON.parse(dataUserStorage)
-      setDataNote({...dataNote, id_user: dataNotesJSON.id})
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[dataUserStorage])
 
   async function CreatedNotes(){
     const data = await axios.post('http://localhost:3000/api/notes/createdNotes', dataNote)

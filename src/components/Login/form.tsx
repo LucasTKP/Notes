@@ -10,15 +10,18 @@ import AppContext from '@/app/appContext';
 function Form() {
   const [eyeOff, setEyeOff] = useState(true)
   const [dataUser, setDataUser] = useState<{email:string, password:string}>({email:'', password:''})
+  const [loading, setLoading] = useState<boolean>(true)
   const router = useRouter()
   const contextUser = useContext(AppContext)
-  const dataUserStorage = localStorage.getItem('user')
 
-  useEffect(() => {
+
+  useEffect(() => {  
+    const dataUserStorage = localStorage.getItem('user')
     if(dataUserStorage){
-        router.push('/')
-        toast.info('Você ja está logado.')
+      toast.info('Você ja está logado.')
+      return router.push('/')
     }
+    setLoading(true)
 // eslint-disable-next-line react-hooks/exhaustive-deps
 },[])
 
@@ -30,7 +33,7 @@ function Form() {
       contextUser.setDataUser(data.data.result[0])
       localStorage.setItem('user', '')
       localStorage.setItem('user', JSON.stringify(data.data.result[0]))
-      router.push('/')
+      return router.push('/')
     }
   }
 
@@ -39,6 +42,7 @@ function Form() {
     toast.promise(SignIn(),{pending:'Fazendo Login...', success:'Usuário logado com sucesso!'})
   }
 
+  if(!loading) return <></>
   return (
     <form onSubmit={OnToast} className='flex flex-col max-sm:mt-[10px]'>
         <ToastContainer />
