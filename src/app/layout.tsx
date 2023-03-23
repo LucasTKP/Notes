@@ -34,6 +34,7 @@ export default function RootLayout({ children }: {children: React.ReactNode}) {
 
   return (
     <html lang="pt-BR" className={` max-w-screen w-full h-full`}>
+      <title>Notes</title>
         <body className={`${hubballi.variable} ${poppins.variable} w-full h-full font-hubballi`}>
         <AppContext.Provider value={{dataUser, setDataUser}}>
             <ToastContainer />
