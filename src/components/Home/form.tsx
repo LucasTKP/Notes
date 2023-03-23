@@ -25,7 +25,7 @@ function Form() {
   },[])
   
   async function GetNotes(dataLocalStorage: DataUser){
-    const pageUrl = window.location.href
+    const pageUrl = window.location.origin
     if(dataLocalStorage){
       const data = await axios.post(pageUrl + '/api/notes/getNotes', {id:dataLocalStorage.id})
       if(data.status === 200){
@@ -40,8 +40,8 @@ function Form() {
   } 
 
   async function CreatedNotes(){
-    const pageUrl = window.location.href
-    const data = await axios.post(pageUrl + 'api/notes/createdNotes', dataNote)
+    const pageUrl = window.location.origin
+    const data = await axios.post(pageUrl + '/api/notes/createdNotes', dataNote)
     if(data.status != 200){
       console.log(data)
       throw toast.error(data.data.msg)
