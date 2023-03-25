@@ -13,8 +13,10 @@
   }
 
   export interface Notes{
+    id:number
     title:string
     text:string
     id_user:string
+    createdDate?:Date
   }
 

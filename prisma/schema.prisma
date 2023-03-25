@@ -19,6 +19,7 @@ model notes {
   id    Int   @id   @default(autoincrement())
   title   String    @db.VarChar(255)
   text    String    @db.VarChar(255)
+  createdDate DateTime @db.DateTime
   id_user Int
   // Chave estrangeira
   user_id   user @relation(fields: [id_user], references: [id])

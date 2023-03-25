@@ -5,6 +5,10 @@ async function GetNotes(req:NextApiRequest, res:NextApiResponse ) {
     const prisma = new PrismaClient()
     try{
         const result = await prisma.notes.findMany({
+            orderBy: 
+                {
+                  createdDate: 'desc',
+                },
             where: {
                 id_user: + req.body.id
             }
