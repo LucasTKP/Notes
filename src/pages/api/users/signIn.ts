@@ -24,20 +24,15 @@ async function SignIn(req:NextApiRequest, res:NextApiResponse ) {
                     res.status(201).send({msg: "Senha incorreta!"})
                     throw err
                 } 
-    
-                const token = jwt.sign({id: result[0].id}, process.env.TOKEN_PASS, {
-                    expiresIn: '1d'
-                })
-                res.status(200).json({msg: 'Usuario logado com sucesso!', result: result, token: token})
+
+                res.status(200).send({msg: 'Usuario logado com sucesso!', result: result})
             })
-        }
-        
-        if (result.length === 0) {
+        } else {
             res.status(201).send({msg: "Email não cadastrado!"})
         }
     } catch(e){
         console.log(e)
-        res.status(201)
+        res.status(201).send({msg: "Senha incorreta!"})
     }
 }
 
