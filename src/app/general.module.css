@@ -1,0 +1,9 @@
+#boxTextNotes::-webkit-scrollbar {
+    width: 8px;
+    scroll-margin:10px;
+  }
+  
+#boxTextNotes::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background: #fbc08d;
+}
