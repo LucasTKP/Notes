@@ -7,7 +7,7 @@ async function GetNotes(req:NextApiRequest, res:NextApiResponse ) {
         const result = await prisma.notes.findMany({
             orderBy: 
                 {
-                  createdDate: 'desc',
+                  id: 'desc',
                 },
             where: {
                 id_user: + req.body.id

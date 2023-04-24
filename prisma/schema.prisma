@@ -19,11 +19,7 @@ model notes {
   id    Int   @id   @default(autoincrement())
   title   String    @db.VarChar(255)
   text    String    @db.VarChar(255)
-<<<<<<< HEAD
   createdDate String 
-=======
-  createdDate DateTime @db.DateTime
->>>>>>> f6d662cd420f89c1c63d9677f0e116b858f96e37
   id_user Int
   // Chave estrangeira
   user_id   user @relation(fields: [id_user], references: [id])
