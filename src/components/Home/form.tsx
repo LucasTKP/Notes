@@ -87,7 +87,11 @@ function Form() {
         {notes?.map((note, index) => {
           return(
             <div key={index}  className={`relative w-full h-[180px] bg-[#fae2bd] pr-[5px] rounded-b-[8px]  ${index != 0 ? 'mt-[20px] rounded-t-[8px]' : ''} `}>
+<<<<<<< HEAD
                 <div onClick={() => OnToastDeletNote(note.id, index)} className='hover:scale-110 cursor-pointer absolute bg-red-500/50 p-[3px] rounded-full right-1 top-1'>
+=======
+                <div onClick={() => OnToastDeletNote(note.id, index)} className='hover:scale-110 cursor-pointer absolute bg-red-800 p-[3px] rounded-full right-1 top-1'>
+>>>>>>> f6d662cd420f89c1c63d9677f0e116b858f96e37
                   <TrashIcon width={25} height={25} /> 
                 </div>
                 <div id={styles.boxTextNotes} className='overflow-auto h-full px-[5px]'>
