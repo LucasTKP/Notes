@@ -16,7 +16,7 @@ async function SignUp(req:NextApiRequest, res:NextApiResponse ) {
               email: email
             }
         })
-
+        console.log(result)
         if (result.length > 0) {
             return res.status(201).send({msg: 'Este usuário já foi cadastrado'})
         } else {

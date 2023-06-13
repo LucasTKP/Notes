@@ -49,13 +49,14 @@ function Form() {
     const pageUrl = window.location.origin
     const date = new Date()
     dataNote.createdDate = date
-    const data = await axios.post(pageUrl + '/api/notes/createdNotes', dataNote)
-    if(data.status != 200){
-      throw toast.error(data.data.msg)
+    try{
+      const data = await axios.post(pageUrl + '/api/notes/createdNotes', dataNote)
+      dataNote.id = data.data.id
+      setNotes(notes => [dataNote, ...notes])
+      setDataNote({...dataNote, title:'', text:''})
+    } catch(e){
+      throw toast.error('Não foi possivel criar está nota.')
     }
-    dataNote.id = data.data.id
-    setNotes(notes => [dataNote, ...notes])
-    setDataNote({...dataNote, title:'', text:''})
   } 
 
   function OnToastDeletNote(id:number, index:number){
@@ -65,12 +66,13 @@ function Form() {
   async function DeletNote(id:number, index:number){
     const pageUrl = window.location.origin
     const allNotes = [...notes]
-    const data = await axios.post(pageUrl + '/api/notes/deletNotes', {id})
-    if(data.status != 200){
-      throw toast.error(data.data.msg)
+    try{
+      const data = await axios.post(pageUrl + '/api/notes/deletNotes', {id})
+      allNotes.splice(index, 1)
+      setNotes(allNotes)
+    } catch(e){
+      throw toast.error('Não foi possivel deletar está nota.')
     }
-    allNotes.splice(index, 1)
-    setNotes(allNotes)
   } 
 
   return (

@@ -17,8 +17,8 @@ async function CreatedNotes(req:NextApiRequest, res:NextApiResponse) {
         })
         return res.status(200).send(result)
     }catch(e){
-        console.log(e)
-        return res.status(201).send({msg:'Não foi possivel criar sua nota.'})
+      console.log(e)
+      return res.status(201).send({msg:'Não foi possivel criar sua nota.'})
     }
 }
 

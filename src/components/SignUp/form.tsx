@@ -22,12 +22,14 @@ function Form() {
 
   async function SignUp(){
     const pageUrl = window.location.origin
-    const data = await axios.post(pageUrl + '/api/users/signUp', dataUser)
-    if(data.status != 200){
-      console.log(data)
-      throw toast.error(data.data.msg)
+    var data 
+    try{
+      data = await axios.post(pageUrl + '/api/users/signUp', dataUser)
+      router.replace('/login')
+    } catch(e){
+      throw toast.error(data?.data?.msg)
     }
-    router.replace('/login')
+
   }
 
   function OnToast(e: { preventDefault: () => void; }){
