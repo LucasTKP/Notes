@@ -3,9 +3,10 @@ generator client {
 }
 datasource db {
   provider = "mysql"
-  url = env("DATABASE_URL")
+  url = "mysql://781817e26psvi45oikd5:pscale_pw_cUxUNuX5xVWECjhuujqV8BaTOEEFmnjNyqvtrz9djfX@aws.connect.psdb.cloud/notes-delas?sslaccept=strict"
   relationMode = "prisma"
 }
+
 
 model user {
   id    Int   @id @default(autoincrement())
