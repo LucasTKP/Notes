@@ -32,11 +32,11 @@ Criar um site que permita usuários androi ter acesso a um bloco de notas pareci
 ### 📷 Tela principal:
 
 
-<table><tr><td>
+<table><td>
   <a href="https://notes-lucastkp.vercel.app/">
     <img src="https://github.com/LucasTKP/Notes/assets/101598532/a33009cc-6a02-4dea-b7cb-386e1caa7f2c" alt="Preview 2CO"/>
   </a>
-</td></tr></table>
+</td></table>
 
 
 <br />
