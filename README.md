@@ -34,7 +34,7 @@ Criar um site que permita usuários androi ter acesso a um bloco de notas pareci
 
 <div align="center">
   <a href="https://notes-lucastkp.vercel.app/">
-    <img src="https://github.com/LucasTKP/Notes/assets/101598532/a33009cc-6a02-4dea-b7cb-386e1caa7f2c" alt="Preview 2CO">
+    <img src="https://github.com/LucasTKP/Notes/assets/101598532/a33009cc-6a02-4dea-b7cb-386e1caa7f2c" alt="Preview 2CO" style="border: 2px solid  gray; border-radius:15px">
   </a>
 </div>
 
