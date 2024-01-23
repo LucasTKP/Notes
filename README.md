@@ -30,12 +30,8 @@ Criar um site que permita usuários androi ter acesso a um bloco de notas pareci
   <br /> <br />
 
 ### 📷 Tela principal:
-
-<div style="border: 2px solid  gray; border-radius:15px>
   
-![Screenshot_5](https://github.com/LucasTKP/Notes/assets/101598532/28a541a2-87bb-4deb-8c1d-b332dbee8edb)
-
-</div>
-
+|![Screenshot_5](https://github.com/LucasTKP/Notes/assets/101598532/28a541a2-87bb-4deb-8c1d-b332dbee8edb)|
+-
 
 <br />
